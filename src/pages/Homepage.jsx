@@ -305,7 +305,7 @@ function Homepage() {
                     <div className="wow-section">
                         <div className="floating-element">
                             <div className="logo">
-                                <img src="../public/ron.svg" alt="Ron's portfolio" />
+                                <img src="/public/ron.svg" alt="Ron's portfolio" />
                             </div>
                             <Link to="mailto:ron.andraina@gmail.com" className="contact-button">Contact</Link>
                         </div>
@@ -380,7 +380,7 @@ function Homepage() {
                                 <div className="about-card">
                                     <div className="top-card">
                                         <div className="card-title">
-                                            <img src="../src/assets/images/myStar.svg" alt="logo" className="spin-star" />
+                                            <img src="/src/assets/images/myStar.svg" alt="logo" className="spin-star" />
                                             <p>About</p>
                                         </div>
                                         <div className="presentation">
@@ -392,7 +392,7 @@ function Homepage() {
                                         </p>
                                     </div>
                                     <div className="about-image">
-                                        <img src="src\assets\images\about.png" alt="" />
+                                        <img src="src/assets/images/about.png" alt="about" />
                                     </div>
                                 </div>
                                 <div className="tool-card">
@@ -416,7 +416,7 @@ function Homepage() {
                                 </div>
                                 <div className="demo-card">
                                     <div className="top-demo">
-                                        <p className="demo-text">A weird <span className="purple-color">shape</span> with another weird <span className="yellow-color">shape</span> moving</p>
+                                        <p className="demo-text">A weird <span className="purple-color">shape</span> with another weird <span className="yellow-color">shape</span></p>
                                         <div className="tag">Demo</div>
                                     </div>
                                     <div className="animation-demo">
