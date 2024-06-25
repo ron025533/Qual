@@ -1,0 +1,167 @@
+.Footer {
+    height: 90vh;
+    width: 100%;
+    position: fixed;
+    background-color: white;
+    z-index: 8;
+    bottom: 0;
+    display: flex;
+}
+
+.big-section {
+    position: absolute;
+    /* background-color: #010101; */
+    z-index: 9;
+}
+
+.para {
+    background-color: #010101;
+}
+
+.trick {
+    position: absolute;
+    z-index: 7;
+    height: 90vh;
+    width: 100%;
+    opacity: 100;
+    pointer-events: none;
+    /* background-color: #37DBFF; */
+    z-index: -100;
+}
+
+.portfolio-background {
+    position: fixed;
+    font-size: 640px;
+    font-weight: 700;
+    color: transparent;
+    -webkit-text-stroke: 1px #01010110;
+    margin-top: -40px;
+    z-index: -1;
+}
+
+.footer-text {
+    display: block;
+    animation: portfolio 100s infinite;
+    animation-timing-function: linear;
+    animation-play-state: running;
+    
+    margin-left: -100%;
+    text-align: left;
+    width: 100%;
+}
+
+.left-footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    height: 92%;
+    padding: 0 0 4% 4%;
+    /* background-color: aquamarine; */
+    width: 38%;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.right-footer {
+    display: flex;
+    flex-direction: column;
+    padding: 6% 4% 4% 4%;
+    /* background-color: rgb(35, 141, 83); */
+    width: 66%;
+    align-items: end;
+    justify-content: space-between;
+}
+
+.footer-list-list {
+    /* background-color: aquamarine; */
+    display: flex;
+    justify-content: space-between;
+    width: 74%;
+}
+
+.footer-list {
+    display: flex;
+    flex-direction: column;
+    /* background-color: aqua; */
+    width: 142px;
+    font-size: 20px;
+    font-weight: 780;
+}
+
+.footer-list-text {
+    font-size: 16px;
+    font-weight: 700;
+    padding: 16% 0 8% 0;
+    color: #0f0f0f;
+}
+
+.link-footer {
+    font-size: 14px;
+    font-weight: 600;
+    opacity: 0.5;
+}
+
+.click-footer {
+    padding: 3% 0;
+}
+
+.click-footer:hover {
+    cursor: pointer;
+    color: #e1e1e1;
+}
+
+.link-click:hover {
+    opacity: 0.25;
+    cursor: pointer;
+    font-weight: 650;
+}
+
+@keyframes portfolio {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(50%);
+    }
+}
+
+.purple-text {
+    color: #EE3FDD;
+}
+
+.blue-text {
+    color: #37DBFF;
+}
+
+.yellow-text {
+    color: #EDD554;
+}
+
+.author {
+    display: flex;
+    width: 42%;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 20px;
+    font-weight: 800;
+    padding: 2% 0;
+    color: #1e1e1e;
+}
+
+.footer-message {
+    opacity: 0.78;
+}
+
+.footer-version {
+    font-size: 14px;
+}
+
+.contact-click {
+    text-decoration: none;
+    color: #1e1e1e;
+}
+
+.contact-click:hover {
+    color: #e1e1e1;
+}
