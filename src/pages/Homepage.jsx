@@ -1,8 +1,8 @@
-import "./styles/Homepage.css"
-import "./styles/Introducing.css"
-import "./styles/Works.css"
-import "./styles/Showcase.css"
-import "./styles/Footer.css"
+import "../styles/Homepage.css"
+import "../styles/Introducing.css"
+import "../styles/Works.css"
+import "../styles/Showcase.css"
+import "../styles/Footer.css"
 import { gsap } from "gsap"
 import { useGSAP } from "@gsap/react"
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
