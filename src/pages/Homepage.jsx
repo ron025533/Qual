@@ -291,7 +291,7 @@ function Homepage() {
                 trigger: '.project-bottom',
                 start: "-200% 80%",
                 end: "100% 100%",
-                markers: true,
+                // markers: true,
                 toggleActions: "play none reverse none",
             }
         })
@@ -305,7 +305,7 @@ function Homepage() {
                     <div className="wow-section">
                         <div className="floating-element">
                             <div className="logo">
-                                <img src="/public/ron.svg" alt="Ron's portfolio" />
+                                <img src="public/ron.svg" alt="Ron's portfolio" />
                             </div>
                             <Link to="mailto:ron.andraina@gmail.com" className="contact-button">Contact</Link>
                         </div>
