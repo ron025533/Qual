@@ -289,9 +289,9 @@ function Homepage() {
             duration: 1,
             scrollTrigger: {
                 trigger: '.project-bottom',
-                start: "0% 60%",
+                start: "-200% 80%",
                 end: "100% 100%",
-                // markers: true,
+                markers: true,
                 toggleActions: "play none reverse none",
             }
         })
@@ -311,7 +311,7 @@ function Homepage() {
                         </div>
                         <div className="big-text-part">
                             <div className="big-one">
-                                <p className="big-one-text">Designebcndjkcbr</p>
+                                <p className="big-one-text">Designer</p>
                             </div>
                             <div className="big-two">
                                 <p className="little-speech">Welcome to my Portfolio! Discover me and my work here by scrolling the page till the end</p>
