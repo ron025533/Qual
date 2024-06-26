@@ -328,6 +328,11 @@
 
 .spin-star {
     animation: spin 1.5s infinite;
+    background-image: url("../assets/images/myStar.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 16px;
+    height: 16px;
 }
 
 @keyframes spin {

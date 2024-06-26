@@ -12,6 +12,7 @@ import Splitting from "splitting";
 import { useEffect } from "react"
 import Lenis from 'lenis'
 import { Link } from 'react-router-dom'
+import figma from "../assets/images/Figma.svg"
 
 <link rel="stylesheet" href="https://unpkg.com/splitting/dist/splitting.css" />
 
@@ -335,31 +336,36 @@ function Homepage() {
                             <div className="transition-logo">
                                 <div className="logo-animation">
                                     <div className="logo-container" id="Orita">
-                                        <img src="src\assets\images\Orita.svg" alt="Orita" className="logos" />
+                                        {/* <img src="src\assets\images\Orita.svg" alt="Orita" className="logos" /> */}
+                                        <div className="orita-svg logos"></div>
                                         <p className="logo-title" id="century">Orita</p>
                                     </div>
                                 </div>
                                 <div className="logo-animation">
                                     <div className="logo-container" id="Lumens">
-                                        <img src="src\assets\images\Lumens.svg" alt="Lumens" className="logos" />
+                                        {/* <img src="src\assets\images\Lumens.svg" alt="Lumens" className="logos" /> */}
+                                        <div className="lumens-svg logos"></div>
                                         <p className="logo-title" id="lexend">Lumens</p>
                                     </div>
                                 </div>
                                 <div className="logo-animation">
                                     <div className="logo-container" id="inter">
-                                        <img src="src\assets\images\Array.svg" alt="Array" className="logos" />
+                                        {/* <img src="src\assets\images\Array.svg" alt="Array" className="logos" /> */}
+                                        <div className="array-svg logos"></div>
                                         <p className="logo-title">Array</p>
                                     </div>
                                 </div>
                                 <div className="logo-animation">
                                     <div className="logo-container" id="gotham">
-                                        <img src="src\assets\images\5Gears.svg" alt="FiveGears" className="logos" />
+                                        {/* <img src="src\assets\images\5Gears.svg" alt="FiveGears" className="logos" /> */}
+                                        <div className="fivegears-svg logos"></div>
                                         <p className="logo-title">5Gears</p>
                                     </div>
                                 </div>
                                 <div className="logo-animation">
                                     <div className="logo-container" id="inknut">
-                                        <img src="src\assets\images\Dinoprint.svg" alt="Dinoprint" className="logos" />
+                                        {/* <img src="src\assets\images\Dinoprint.svg" alt="Dinoprint" className="logos" /> */}
+                                        <div className="dinoprint-svg logos"></div>
                                         <p className="logo-title">Dinoprint</p>
                                     </div>
                                 </div>
@@ -381,7 +387,8 @@ function Homepage() {
                                 <div className="about-card">
                                     <div className="top-card">
                                         <div className="card-title">
-                                            <img src="/src/assets/images/myStar.svg" alt="logo" className="spin-star" />
+                                            {/* <img src="/src/assets/images/myStar.svg" alt="logo" className="spin-star" /> */}
+                                            <div className="spin-star"></div>
                                             <p>About</p>
                                         </div>
                                         <div className="presentation">
@@ -393,13 +400,15 @@ function Homepage() {
                                         </p>
                                     </div>
                                     <div className="about-image">
-                                        <img src="src/assets/images/about.png" alt="about" />
+                                        {/* <img src="src/assets/images/about.png" alt="about" /> */}
+                                        <div className="about-img"></div>
                                     </div>
                                 </div>
                                 <div className="tool-card">
                                     <div className="tool-title">Tools</div>
                                     <div className="tool-list">
-                                        <img src="src\assets\images\Figma.svg" alt="Figma" />
+                                        {/* <img src="src\assets\images\Figma.svg" alt="Figma" /> */}
+                                        <img src={figma} alt="figma" />
                                         <img src="src\assets\images\Illustrator.svg" alt="Illustrator" />
                                         <img src="src\assets\images\Photoshop.svg" alt="Photoshop" />
                                     </div>
