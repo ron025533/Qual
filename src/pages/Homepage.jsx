@@ -305,13 +305,14 @@ function Homepage() {
                     <div className="wow-section">
                         <div className="floating-element">
                             <div className="logo">
-                                <img src="public/ron.svg" alt="Ron's portfolio" />
+                                {/* <img src="public/ron.svg" alt="Ron's portfolio" /> */}
+                                <div className="ron-svg"></div>
                             </div>
                             <Link to="mailto:ron.andraina@gmail.com" className="contact-button">Contact</Link>
                         </div>
                         <div className="big-text-part">
                             <div className="big-one">
-                                <p className="big-one-text">Designers</p>
+                                <p className="big-one-text">Designer</p>
                             </div>
                             <div className="big-two">
                                 <p className="little-speech">Welcome to my Portfolio! Discover me and my work here by scrolling the page till the end</p>

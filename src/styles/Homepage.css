@@ -198,3 +198,10 @@
     width: 34%;
     opacity: 28%;
 }
+
+.ron-svg {
+    background-image: url("../assets/images/ron.svg");
+    background-size: cover;
+    width: 60%;
+    height: 60%;
+}
