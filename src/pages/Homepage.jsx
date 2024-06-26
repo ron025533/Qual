@@ -311,7 +311,7 @@ function Homepage() {
                         </div>
                         <div className="big-text-part">
                             <div className="big-one">
-                                <p className="big-one-text">Designer</p>
+                                <p className="big-one-text">Designers</p>
                             </div>
                             <div className="big-two">
                                 <p className="little-speech">Welcome to my Portfolio! Discover me and my work here by scrolling the page till the end</p>
