@@ -12,7 +12,26 @@ import Splitting from "splitting";
 import { useEffect } from "react"
 import Lenis from 'lenis'
 import { Link } from 'react-router-dom'
+import ron from "../assets/images/ron.svg"
+import spinstar from "../assets/images/myStar.svg"
+import orita from "../assets/images/Orita.svg"
+import lumens from "../assets/images/Lumens.svg"
+import array from "../assets/images/Array.svg"
+import fivegears from "../assets/images/5Gears.svg"
+import dinoprint from "../assets/images/Dinoprint.svg"
+import aboutimage from "../assets/images/about.png"
 import figma from "../assets/images/Figma.svg"
+import illustrator from "../assets/images/Illustrator.svg"
+import photoshop from "../assets/images/Photoshop.svg"
+import framer from "../assets/images/Framer.svg"
+import weird from "../assets/images/weirdShapes.svg"
+import verticalone from "../assets/images/verticalone.png"
+import verticaltwo from "../assets/images/verticaltwo.png"
+import horizontal from "../assets/images/horizontal.png"
+import lumenslogo from "../assets/images/Lumens.png"
+import serenitylogo from "../assets/images/serenity.png"
+import arraylogo from "../assets/images/Array.png"
+import pearl from "../assets/images/Pearl.png"
 
 <link rel="stylesheet" href="https://unpkg.com/splitting/dist/splitting.css" />
 
@@ -306,8 +325,7 @@ function Homepage() {
                     <div className="wow-section">
                         <div className="floating-element">
                             <div className="logo">
-                                {/* <img src="public/ron.svg" alt="Ron's portfolio" /> */}
-                                <div className="ron-svg"></div>
+                                <img src={ron} alt="Ron's portfolio" />
                             </div>
                             <Link to="mailto:ron.andraina@gmail.com" className="contact-button">Contact</Link>
                         </div>
@@ -336,36 +354,31 @@ function Homepage() {
                             <div className="transition-logo">
                                 <div className="logo-animation">
                                     <div className="logo-container" id="Orita">
-                                        {/* <img src="src\assets\images\Orita.svg" alt="Orita" className="logos" /> */}
-                                        <div className="orita-svg logos"></div>
+                                        <img src={orita} alt="Orita" className="logos" />
                                         <p className="logo-title" id="century">Orita</p>
                                     </div>
                                 </div>
                                 <div className="logo-animation">
                                     <div className="logo-container" id="Lumens">
-                                        {/* <img src="src\assets\images\Lumens.svg" alt="Lumens" className="logos" /> */}
-                                        <div className="lumens-svg logos"></div>
+                                        <img src={lumens} alt="Lumens" className="logos" />
                                         <p className="logo-title" id="lexend">Lumens</p>
                                     </div>
                                 </div>
                                 <div className="logo-animation">
                                     <div className="logo-container" id="inter">
-                                        {/* <img src="src\assets\images\Array.svg" alt="Array" className="logos" /> */}
-                                        <div className="array-svg logos"></div>
+                                        <img src={array} alt="Array" className="logos" />
                                         <p className="logo-title">Array</p>
                                     </div>
                                 </div>
                                 <div className="logo-animation">
                                     <div className="logo-container" id="gotham">
-                                        {/* <img src="src\assets\images\5Gears.svg" alt="FiveGears" className="logos" /> */}
-                                        <div className="fivegears-svg logos"></div>
+                                        <img src={fivegears} alt="FiveGears" className="logos" />
                                         <p className="logo-title">5Gears</p>
                                     </div>
                                 </div>
                                 <div className="logo-animation">
                                     <div className="logo-container" id="inknut">
-                                        {/* <img src="src\assets\images\Dinoprint.svg" alt="Dinoprint" className="logos" /> */}
-                                        <div className="dinoprint-svg logos"></div>
+                                        <img src={dinoprint} alt="Dinoprint" className="logos" />
                                         <p className="logo-title">Dinoprint</p>
                                     </div>
                                 </div>
@@ -387,8 +400,7 @@ function Homepage() {
                                 <div className="about-card">
                                     <div className="top-card">
                                         <div className="card-title">
-                                            {/* <img src="/src/assets/images/myStar.svg" alt="logo" className="spin-star" /> */}
-                                            <div className="spin-star"></div>
+                                            <img src={spinstar} alt="logo" className="spin-star" />
                                             <p>About</p>
                                         </div>
                                         <div className="presentation">
@@ -400,24 +412,22 @@ function Homepage() {
                                         </p>
                                     </div>
                                     <div className="about-image">
-                                        {/* <img src="src/assets/images/about.png" alt="about" /> */}
-                                        <div className="about-img"></div>
+                                        <img src={aboutimage} alt="about" />
                                     </div>
                                 </div>
                                 <div className="tool-card">
                                     <div className="tool-title">Tools</div>
                                     <div className="tool-list">
-                                        {/* <img src="src\assets\images\Figma.svg" alt="Figma" /> */}
                                         <img src={figma} alt="figma" />
-                                        <img src="src\assets\images\Illustrator.svg" alt="Illustrator" />
-                                        <img src="src\assets\images\Photoshop.svg" alt="Photoshop" />
+                                        <img src={illustrator} alt="Illustrator" />
+                                        <img src={photoshop} alt="Photoshop" />
                                     </div>
                                 </div>
                             </div>
                             <div className="card-display end" id="second-card">
                                 <div className="animation-card">
                                     <div className="animation-logo">
-                                        <img src="src\assets\images\Framer.svg" alt="Framer" />
+                                        <img src={framer} alt="Framer" />
                                     </div>
                                     <div className="animation-blabla">
                                         <p className="animation-title">Animation</p>
@@ -430,7 +440,7 @@ function Homepage() {
                                         <div className="tag">Demo</div>
                                     </div>
                                     <div className="animation-demo">
-                                        <img src="src\assets\images\weirdShapes.svg" alt="weird" />
+                                        <img src={weird} alt="weird" />
                                     </div>
                                 </div>
                             </div>
@@ -438,7 +448,7 @@ function Homepage() {
                                 <div className="extra-card">
                                     <div className="top-extra">
                                         <div className="card-title">
-                                            <img src="../src/assets/images/myStar.svg" alt="logo" className="spin-star" />
+                                            <img src={spinstar} alt="logo" className="spin-star" />
                                             <p>Extra</p>
                                         </div>
                                         <p className="extra-text">Making Illustration</p>
@@ -446,14 +456,14 @@ function Homepage() {
                                     <div className="illustration-container">
                                         <div className="vertical-illustration">
                                             <div className="vertical">
-                                                <img src="src\assets\images\verticalone.png" alt="verti" />
+                                                <img src={verticalone} alt="verti" />
                                             </div>
                                             <div className="vertical">
-                                                <img src="src\assets\images\verticaltwo.png" alt="verti" />
+                                                <img src={verticaltwo} alt="verti" />
                                             </div>
                                         </div>
                                         <div className="horizontal-illustration">
-                                            <img src="src\assets\images\horizontal.png" alt="hori" />
+                                            <img src={horizontal} alt="hori" />
                                         </div>
                                     </div>
                                 </div>
@@ -461,7 +471,7 @@ function Homepage() {
                             <div className="card-display between" id="fourth-card">
                                 <div className="ability-card">
                                     <div className="ability-title">
-                                        <img src="../src/assets/images/myStar.svg" alt="logo" className="spin-star" />
+                                        <img src={spinstar} alt="logo" className="spin-star" />
                                         <p>Ability</p>
                                     </div>
                                     <div className="ability-lines">
@@ -536,7 +546,7 @@ function Homepage() {
                         <div className="works-logo">
                             <div className="logo-description">
                                 <div className="card-title">
-                                    <img src="../src/assets/images/myStar.svg" alt="logo" className="spin-star" />
+                                    <img src={spinstar} alt="logo" className="spin-star" />
                                     <p>Logo Conception</p>
                                 </div>
                                 <div className="big-text-works">
@@ -547,7 +557,7 @@ function Homepage() {
                             <div className="logo-demo">
                                 <div className="logo-container" id="lumens-container">
                                     <div className="logo-svg" id="lumens-logo">
-                                        <img src="../src/assets/images/Lumens.png" alt="Lumens" width={38} />
+                                        <img src={lumenslogo} alt="Lumens" width={38} />
                                     </div>
                                     <div className="logo-info">
                                         <div className="logo-name">Lumens</div>
@@ -556,7 +566,7 @@ function Homepage() {
                                 </div>
                                 <div className="logo-container">
                                     <div className="logo-svg">
-                                        <img src="../src/assets/images/Serenity.png" alt="Serenity" width={38} />
+                                        <img src={serenitylogo} alt="Serenity" width={38} />
                                     </div>
                                     <div className="logo-info">
                                         <div className="logo-name">Serenity</div>
@@ -565,7 +575,7 @@ function Homepage() {
                                 </div>
                                 <div className="logo-container">
                                     <div className="logo-svg">
-                                        <img src="../src/assets/images/Array.png" alt="Array" width={38} />
+                                        <img src={arraylogo} alt="Array" width={38} />
                                     </div>
                                     <div className="logo-info">
                                         <div className="logo-name">Array</div>
@@ -578,7 +588,7 @@ function Homepage() {
                     <div className="works-second-section">
                         <div className="speciality">
                             <div className="card-title">
-                                <img src="../src/assets/images/myStar.svg" alt="logo" className="spin-star" />
+                                <img src={spinstar} alt="logo" className="spin-star" />
                                 <p>Web Developement</p>
                             </div>
                             <div className="big-speciality-text">Specialized in web developement</div>
@@ -620,7 +630,7 @@ function Homepage() {
                         <div className="project">
                             <div className="project-top">
                                 <div className="card-title">
-                                    <img src="../src/assets/images/myStar.svg" alt="logo" className="spin-star" />
+                                    <img src={spinstar} alt="logo" className="spin-star" />
                                     <p>Projects</p>
                                 </div>
                                 <div className="project-description">
@@ -708,7 +718,7 @@ function Homepage() {
                             </div>
                             <div className="demo-section">
                                 <div className="screen">
-                                    <img className="screen-image" src="../src/assets/images/Pearl.png" alt="Demo" />
+                                    <img className="screen-image" src={pearl} alt="Demo" />
                                 </div>
                             </div>
                         </div>
@@ -720,7 +730,7 @@ function Homepage() {
                 <div className="portfolio-background"><p className="footer-text">PortfolioPortfolio</p></div>
                 <div className="left-footer">
                     <div className="author">
-                        <img src="../src\assets\Logo.svg" alt="logo" width="24px" />
+                        <img src={ron} alt="logo" width="24px" />
                         <p>My Portfolio</p>
                     </div>
                     <p className="footer-message">Don't hesitate anymore, contact me for your projects.</p>
