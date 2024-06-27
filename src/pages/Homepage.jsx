@@ -57,13 +57,13 @@ function Homepage() {
 
         gsap.from(selection[0].chars, {
             color: "#0f0f0f",
-            stagger: 10,
-            duration: 10,
+            stagger: 8,
+            duration: 100,
             autoAlpha: 1,
             scrollTrigger: {
                 trigger: ".showcase-text-section",
-                start: "0% 50%",
-                end: "90% 80%",
+                start: "0% 40%",
+                end: "100% 80%",
                 scrub: true,
                 // markers: true,
             }
