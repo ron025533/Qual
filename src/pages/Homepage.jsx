@@ -32,6 +32,7 @@ import lumenslogo from "../assets/images/Lumens.png"
 import serenitylogo from "../assets/images/serenity.png"
 import arraylogo from "../assets/images/Array.png"
 import pearl from "../assets/images/Pearl.png"
+import { addHtml, removeHtml, addCss, removeCss, addJs, removeJs, addReact, removeReact } from "../hooks/AddRemove";
 
 <link rel="stylesheet" href="https://unpkg.com/splitting/dist/splitting.css" />
 
@@ -46,6 +47,7 @@ function Homepage() {
         gsap.ticker.add((time) => {
             lenis.raf(time * 800)
         })
+
     }, []);
 
     useGSAP(() => {
@@ -308,15 +310,43 @@ function Homepage() {
             height: 0,
             duration: 1,
             scrollTrigger: {
-                trigger: '.project-bottom',
-                start: "-200% 80%",
+                trigger: '.project',
+                start: "24% 80%",
                 end: "100% 100%",
                 // markers: true,
-                toggleActions: "play none reverse none",
+                toggleActions: "play none play reverse",
             }
         })
 
+        gsap.from('.round-bubble', {
+            margin: 0,
+            duration: 1,
+            ease: "back.inOut",
+            scrollTrigger: {
+                trigger: '.project',
+                start: "10% 80%",
+                end: "100% 100%",
+                // markers: true,
+                toggleActions: "play none play reverse",
+            }
+        })
+
+        var htmlfloat = gsap.timeline()
+
+        htmlfloat.from('#html', {
+            scale: 0,
+        })
+
     })
+
+    addHtml()
+    removeHtml()
+    addCss()
+    removeCss()
+    addJs()
+    removeJs()
+    addReact()
+    removeReact()
 
     return (
         <div className="home-container">
@@ -635,6 +665,20 @@ function Homepage() {
                                 </div>
                                 <div className="project-description">
                                     Learn by mistake and evolve in each of them
+                                </div>
+                                <div className="bubble-skill">
+                                    <div className="float-tag">
+                                        <div className="tag-container purple" id="html">Html</div>
+                                        <div className="tag-container blue" id="css">CSS</div>
+                                        <div className="tag-container yellow" id="javascript">JavaScript</div>
+                                        <div className="tag-container blue" id="react">React</div>
+                                    </div>
+                                    <div className="bubbles">
+                                        <div className="round-bubble" id="first-round" onMouseEnter={addHtml} onMouseLeave={removeHtml}></div>
+                                        <div className="round-bubble" id="second-round" onMouseEnter={addCss} onMouseLeave={removeCss}></div>
+                                        <div className="round-bubble" id="third-round" onMouseEnter={addJs} onMouseLeave={removeJs}></div>
+                                        <div className="round-bubble" id="fourth-round" onMouseEnter={addReact} onMouseLeave={removeReact}></div>
+                                    </div>
                                 </div>
                             </div>
                             <div className="project-bottom">
