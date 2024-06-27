@@ -696,7 +696,7 @@ function Homepage() {
                                     </div>
                                     <div className="month-bar">
                                         <div className="bar purple-bar"></div>
-                                        <p className="abrev">MER</p>
+                                        <p className="abrev">MAR</p>
                                     </div>
                                     <div className="month-bar">
                                         <div className="bar blue-bar high"></div>
