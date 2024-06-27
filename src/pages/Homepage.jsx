@@ -631,7 +631,7 @@ function Homepage() {
                                     <div className="right-section-speciality">
                                         <p className="speciality-name">Website</p>
                                         <p className="speciality-text">
-                                            Usually work with React librairies. Almost master in Html and Css, doing responsive website is fast and easeier than ever.
+                                            Usually work with React librairies. Almost master in Html and Css, doing responsive website is fast and easier than ever.
                                         </p>
                                     </div>
                                 </div>
