@@ -1,78 +1,46 @@
-*,::before,::after {
+*,
+::before,
+::after {
   margin: 0;
   padding: 0;
 }
 
 @font-face {
-  font-family: 'Raleway';
-  src: url(../public/fonts/Raleway-VariableFont_wght.ttf);
+  font-family: 'Aeonik-medium';
+  src: url(../public/fonts/Aeonik-Medium.otf);
 }
 
 @font-face {
-  font-family: 'century';
-  src: url(../public/fonts/CenturyGothic.ttf);
+  font-family: 'Aeonik-light';
+  src: url(../public/fonts/Aeonik-light.otf);
 }
 
 @font-face {
-  font-family: 'lexend';
-  src: url(../public/fonts/LexendExa-VariableFont_wght.ttf);
+  font-family: 'Gallient';
+  src: url(../public/fonts/Gallient.ttf);
 }
 
 @font-face {
-  font-family: 'inter';
-  src: url(../public/fonts/Inter-VariableFont_slnt\,wght.ttf);
-}
-
-@font-face {
-  font-family: 'gotham';
-  src: url(../public/fonts/GothamMediumItalic.ttf);
-}
-
-@font-face {
-  font-family: 'inknut';
-  src: url(../public/fonts/InknutAntiqua-Medium.ttf);
+  font-family: 'Lemonada';
+  src: url(../public/fonts/Lemonada-VariableFont_wght.ttf);
 }
 
 :root {
-  --text-font: 'Raleway';
-  --century-font: 'century';
-  --lexend-font: 'lexend';
-  --inter-font: 'inter';
-  --gotham-font: 'gotham';
-  --inknut-font: 'inknut';
-  --black-color: black;
-  --white-color: white;
+  overflow-y: hidden;
+
+  --medium-font: 'Aeonik-medium';
+  --light-font: 'Aeonik-light';
+  --home-font: 'Gallient';
+  --title-font: 'Lemonada';
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  font-family: var(--text-font);
-  background-color: var(--white-color);
+  font-family: var(--medium-font);
 }
 
 ::selection {
-  background-color: #7B8CB7;
-  color: black;
-}
-
-#century {
-  font-family: var(--century-font);
-}
-
-#lexend {
-  font-family: var(--lexend-font);
-}
-
-#inter {
-  font-family: var(--inter-font);
-}
-
-#gotham {
-  font-family: var(--gotham-font);
-}
-
-#inknut {
-  font-family: var(--inknut-font);
+  background-color: #ff91b2dd;
 }

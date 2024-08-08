@@ -1,830 +1,203 @@
-import "../styles/Homepage.css"
-import "../styles/Introducing.css"
-import "../styles/Works.css"
-import "../styles/Showcase.css"
-import "../styles/Footer.css"
-import { gsap } from "gsap"
-import { useGSAP } from "@gsap/react"
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Timeline } from "gsap/gsap-core"
-import "splitting/dist/splitting.css";
-import Splitting from "splitting";
-import { useEffect } from "react"
-import Lenis from 'lenis'
-import { Link } from 'react-router-dom'
-import ron from "../assets/images/ron.svg"
-import spinstar from "../assets/images/myStar.svg"
-import orita from "../assets/images/Orita.svg"
-import lumens from "../assets/images/Lumens.svg"
-import array from "../assets/images/Array.svg"
-import fivegears from "../assets/images/5Gears.svg"
-import dinoprint from "../assets/images/Dinoprint.svg"
-import aboutimage from "../assets/images/about.png"
-import figma from "../assets/images/Figma.svg"
-import illustrator from "../assets/images/Illustrator.svg"
-import photoshop from "../assets/images/Photoshop.svg"
-import framer from "../assets/images/Framer.svg"
-import weird from "../assets/images/weirdShapes.svg"
-import verticalone from "../assets/images/verticalone.png"
-import verticaltwo from "../assets/images/verticaltwo.png"
-import horizontal from "../assets/images/horizontal.png"
-import lumenslogo from "../assets/images/Lumens.png"
-import serenitylogo from "../assets/images/serenity.png"
-import arraylogo from "../assets/images/Array.png"
-import pearl from "../assets/images/Pearl.png"
-import { addHtml, removeHtml, addCss, removeCss, addJs, removeJs, addReact, removeReact } from "../hooks/AddRemove";
+import "../styles/Home.css"
+import map from "../assets/images/map.png"
+import win from "../assets/images/win.png"
+import trefle from "../assets/images/trefle.png"
+import NavBar from "../components/navbar";
+import SplashScreen from "../components/splashScreen";
+import Particles from "../components/particles";
+import gsap from "gsap";
+import { MotionPathPlugin } from "gsap/MotionPathPlugin";
+import { useGSAP } from "@gsap/react";
 
-<link rel="stylesheet" href="https://unpkg.com/splitting/dist/splitting.css" />
-
-function Homepage() {
-
-    useEffect(() => {
-
-        const lenis = new Lenis()
-
-        lenis.on('scroll', ScrollTrigger.update)
-
-        gsap.ticker.add((time) => {
-            lenis.raf(time * 800)
-        })
-
-    }, []);
+const Homepage = () => {
 
     useGSAP(() => {
 
-        gsap.registerPlugin(ScrollTrigger, Timeline)
-        let selection = Splitting();
+        const splashTl = gsap.timeline()
 
-        gsap.from(selection[0].chars, {
-            color: "#0f0f0f",
-            stagger: 8,
-            duration: 100,
-            autoAlpha: 1,
-            scrollTrigger: {
-                trigger: ".showcase-text-section",
-                start: "0% 40%",
-                end: "100% 80%",
-                scrub: true,
-                // markers: true,
-            }
-        })
+        splashTl
+            .from(".qual", {
+                duration: 2,
+                opacity: 0,
+            })
+            .from(".bar", {
+                duration: 4.4,
+                width: 0,
+                ease: "power2",
+            })
 
-        let wowTl = gsap.timeline()
+        gsap.registerPlugin(MotionPathPlugin);
 
-        ScrollTrigger.create({
-            animation: wowTl,
-            trigger: '.wow-section',
-            start: 'top center',
-            end: 'bottom center',
-            toggleActions: "restart reverse restart reverse",
-            // markers: true,
+        const colors = ['#FFBE82', '#FF9AAC', '#94D6FF', '#DE98FF'];
+
+        // Set the initial random background color
+        document.querySelector(".colorful").style.backgroundColor = colors;
+        const initialColor = colors[Math.floor(Math.random() * colors.length)];
+        document.querySelector(".splash").style.backgroundColor = initialColor;
+
+        // Create a timeline for the color animation
+        const colorTl = gsap.timeline({ repeat: -1, repeatDelay: 0 });
+        const colorfulTl = gsap.timeline({ repeat: -1, repeatDelay: 0 });
+
+        colors.forEach((color) => {
+            colorTl.to(".splash", {
+                backgroundColor: color,
+                duration: 6, // duration of the color transition
+                ease: "none" // linear transition
+            });
         });
 
-        gsap.from('.big-two-text', {
-            yPercent: 200,
-            duration: 0.8,
-            ease: "power1.out",
-            scrollTrigger: {
-                trigger: '.wow-section',
-                start: 'top center',
-                end: 'bottom center',
-                toggleActions: "restart reverse restart reverse",
-                // markers: true,
-            }
-        })
+        colors.forEach((colorful) => {
+            colorfulTl.to(".colorful", {
+                backgroundColor: colorful,
+                duration: 8, // duration of the color transition
+                ease: "none" // linear transition
+            });
+        });
 
-        wowTl.from('.big-one-text', {
-            yPercent: 200,
-            duration: 1,
-            ease: "power4"
-            // scrollTrigger: {
-            //     trigger: ".wow-section",
-            //     start: "top 50%",
-            //     speed: 500,
-            //     markers: true
-            // }
-        })
-            .from('.big-two', {
-                xPercent: -28.3,
-                duration: 0.8,
-                ease: "power1.out"
-            })
-            .from('.little-speech', {
-                yPercent: -200,
-                duration: 0.8,
-                ease: "power1.out",
-                autoAlpha: 0.5,
-                lineHeight: "60px",
+        // Time when the page starts loading
+        const startTime = new Date().getTime();
+
+        const hide = gsap.timeline();
+
+        // Function to hide the splash screen
+        function hideSplashScreen() {
+
+            hide.to(".splash", {
+                ease: "power2",
+                yPercent: -100,
+                duration: 1,
+                onComplete: function () {
+                    document.querySelector(".splash").style.display = 'none';
+                    startAnimations(); // Start all other animations after hiding the splash screen
+                }
             });
 
-        let logoTl = gsap.timeline()
+            gsap.to(".content", {
+                opacity: 1,
+                duration: 1
+            });
+        }
 
-        ScrollTrigger.create({
-            animation: logoTl,
-            trigger: '.transition-container',
-            start: 'top center',
-            end: 'bottom center',
-            toggleActions: "play none none none",
-        })
+        // Minimum display time for the splash screen (4 seconds)
+        const minDisplayTime = 6000;
 
-        gsap.from('.button-paragraph, .colored-text, .colored-text, .button-text', {
-            width: 0,
-            duration: 1,
-            ease: "back.inOut",
-            scrollTrigger: {
-                trigger: '.transition-container',
-                start: 'top center',
-                end: 'bottom center',
-                toggleActions: "restart none none reverse",
-                // markers: true,
+        window.onload = function () {
+            // Calculate the elapsed time
+            const elapsedTime = new Date().getTime() - startTime;
+
+            // Determine how much longer to show the splash screen
+            const remainingTime = minDisplayTime - elapsedTime;
+
+            if (remainingTime > 0) {
+                setTimeout(hideSplashScreen, remainingTime);
+            } else {
+                hideSplashScreen();
             }
-        })
+        };
 
-        logoTl.from('#Orita', {
-            yPercent: -100,
-            duration: 0.4,
-            ease: "back.inOut"
-        })
-            .from('#Lumens', {
-                xPercent: -100,
-                duration: 0.4,
-                ease: "back.inOut"
-            })
-            .from('#inter', {
+        function startAnimations() {
+
+            gsap.from("#map, #win, #trefle", {
+                duration: 1.5,
+                ease: "power2",
                 yPercent: 100,
-                duration: 0.4,
-                ease: "back.inOut"
-            })
-            .from('#gotham', {
-                xPercent: 100,
-                duration: 0.4,
-                ease: "back.inOut"
-            })
-            .from('#inknut', {
-                yPercent: -100,
-                duration: 0.4,
-                ease: "back.inOut"
+                stagger: 0.5,
             })
 
-        let floatingFirst = gsap.timeline()
-        let floatingSecond = gsap.timeline()
-        let floatingThird = gsap.timeline()
-        let floatingFourth = gsap.timeline()
+            const revealTl = gsap.timeline()
 
-        floatingFirst.to('#first-card', {
-            yPercent: -24,
-            scrollTrigger: {
-                trigger: '.introducing-section',
-                start: '20% center',
-                end: 'bottom 20%',
-                toggleActions: "play none none reverse",
-                scrub: 10,
-                ease: "back",
-                // markers: true,
-            },
-        })
-
-        floatingSecond.to('#second-card', {
-            yPercent: -36,
-            scrollTrigger: {
-                trigger: '.introducing-section',
-                start: '20% center',
-                end: 'bottom 20%',
-                toggleActions: "play none none reverse",
-                scrub: 10,
-                ease: "back",
-                // markers: true,
-            },
-        })
-
-        floatingThird.to('#third-card', {
-            yPercent: -16,
-            scrollTrigger: {
-                trigger: '.introducing-section',
-                start: '20% center',
-                end: 'bottom 20%',
-                toggleActions: "play none none reverse",
-                scrub: 10,
-                ease: "back",
-                // markers: true,
-            },
-        })
-
-        floatingFourth.to('#fourth-card', {
-            yPercent: -30,
-            scrollTrigger: {
-                trigger: '.introducing-section',
-                start: '20% center',
-                end: 'bottom 20%',
-                toggleActions: "play none none reverse",
-                scrub: 10,
-                ease: "back",
-                // markers: true,
-            },
-        })
-
-        gsap.to('.para', {
-            borderBottomLeftRadius: "44px",
-            borderBottomRightRadius: "54px",
-            scrollTrigger: {
-                trigger: ".trick",
-                scrub: 10,
-                start: "top 80%",
-                end: "80% 80%",
-                // markers: true,
-            }
-        })
-
-        gsap.from('.speciality', {
-            scale: 0.1,
-            duration: 1,
-            scrollTrigger: {
-                trigger: '.works-second-section',
-                scrub: true,
-                start: "-150% 0%",
-                end: "20% 40%",
-                // markers: true,
-            }
-        })
-
-        gsap.from('.project-bottom', {
-            scale: 0.1,
-            duration: 1,
-            scrollTrigger: {
-                trigger: '.works-second-section',
-                scrub: true,
-                start: "-150% 0%",
-                end: "20% 40%",
-                // markers: true,
-            }
-        })
-
-        gsap.from('.intro-line', {
-            width: '0px',
-            duration: 1,
-            ease: 'power2.out',
-            scrollTrigger: {
-                trigger: '.introducing-section',
-                // markers: true,
-                start: "0% 50%",
-                toggleActions: "play none none reverse",
-            }
-        })
-
-        gsap.from('.work-line', {
-            width: '0px',
-            duration: 1,
-            ease: 'power2.out',
-            scrollTrigger: {
-                trigger: '.works-section',
-                // markers: true,
-                start: "0% 50%",
-                toggleActions: "play none none reverse",
-            }
-        })
-
-        gsap.from('.show-line', {
-            width: '0px',
-            duration: 1,
-            ease: 'power2.out',
-            scrollTrigger: {
-                trigger: '.showcase-text-section',
-                // markers: true,
-                start: "0% 50%",
-                toggleActions: "play none none reverse",
-            }
-        })
-
-        gsap.from('.stat-lines', {
-            width: 0,
-            duration: 1,
-            scrollTrigger: {
-                trigger: '.floating-cards',
-                // markers: true,
-                start: "0% 50%",
-                toggleActions: "play none none reverse"
-            }
-        })
-
-        gsap.from('.bar', {
-            height: 0,
-            duration: 1,
-            scrollTrigger: {
-                trigger: '.project',
-                start: "24% 80%",
-                end: "100% 100%",
-                // markers: true,
-                toggleActions: "play none play reverse",
-            }
-        })
-
-        gsap.from('.round-bubble', {
-            margin: 0,
-            duration: 1,
-            ease: "back.inOut",
-            scrollTrigger: {
-                trigger: '.project',
-                start: "10% 80%",
-                end: "100% 100%",
-                // markers: true,
-                toggleActions: "play none play reverse",
-            }
-        })
-
-        var htmlfloat = gsap.timeline()
-
-        htmlfloat.from('#html', {
-            scale: 0,
-        })
+            revealTl
+                .to("#map, #trefle, #win", {
+                    opacity: 1,
+                    ease: "power1",
+                    duration: 1.4,
+                    stagger: 0.5,
+                })
+                .to('.plane', {
+                    duration: 2.4,
+                    scale: 1,
+                    ease: "power2",
+                    motionPath: {
+                        path: ".path",
+                        align: ".path",
+                        alignOrigin: [0.5, 0.5],
+                        autoRotate: true,
+                        start: 0
+                    },
+                })
+                .to(".rounds, .croix", {
+                    scale: 1,
+                    duration: 2,
+                    stagger: 0.2,
+                })
+            // Add more animations as needed
+        }
 
     })
 
-    addHtml()
-    removeHtml()
-    addCss()
-    removeCss()
-    addJs()
-    removeJs()
-    addReact()
-    removeReact()
-
     return (
-        <div className="home-container">
-            <div className="big-section">
-                <div className="para">
-                    <div className="wow-section">
-                        <div className="floating-element">
-                            <div className="logo">
-                                <img src={ron} alt="Ron's portfolio" />
-                            </div>
-                            <Link to="mailto:ron.andraina@gmail.com" className="contact-button">Contact</Link>
-                        </div>
-                        <div className="big-text-part">
-                            <div className="big-one">
-                                <p className="big-one-text">Designer</p>
-                            </div>
-                            <div className="big-two">
-                                <p className="little-speech">Welcome to my Portfolio! Discover me and my work here by scrolling the page till the end</p>
-                                <p className="big-two-text">Developer</p>
-                            </div>
+        <div className="home">
+            <Particles />
+            <SplashScreen />
+            <NavBar />
+            <div className="huge-text-container">
+                <p className="huge-text bring">Bring</p>
+                <div className="middle">
+                    <div className="the-border">
+                        <div className="the-background">
+                            <p className="huge-text">the</p>
                         </div>
                     </div>
-                    <div className="transition-container">
-                        <div className="transition-content">
-                            <div className="transition-button">
-                                <div className="button-container">
-                                    <div className="button-text">
-                                        <p className="button-paragraph">Let's make cool stuff</p>
-                                    </div>
-                                    <div className="colored-button">
-                                        <p className="colored-text">Collaborate</p>
-                                    </div>
-                                </div>
+                    <div className="two">
+                        <div className="to-button">
+                            <p className="huge-text">to</p>
+                            <div className="static-button">
+                                <p className="static-text">Let's travel</p>
                             </div>
-                            <div className="transition-logo">
-                                <div className="logo-animation">
-                                    <div className="logo-container" id="Orita">
-                                        <img src={orita} alt="Orita" className="logos" />
-                                        <p className="logo-title" id="century">Orita</p>
-                                    </div>
-                                </div>
-                                <div className="logo-animation">
-                                    <div className="logo-container" id="Lumens">
-                                        <img src={lumens} alt="Lumens" className="logos" />
-                                        <p className="logo-title" id="lexend">Lumens</p>
-                                    </div>
-                                </div>
-                                <div className="logo-animation">
-                                    <div className="logo-container" id="inter">
-                                        <img src={array} alt="Array" className="logos" />
-                                        <p className="logo-title">Array</p>
-                                    </div>
-                                </div>
-                                <div className="logo-animation">
-                                    <div className="logo-container" id="gotham">
-                                        <img src={fivegears} alt="FiveGears" className="logos" />
-                                        <p className="logo-title">5Gears</p>
-                                    </div>
-                                </div>
-                                <div className="logo-animation">
-                                    <div className="logo-container" id="inknut">
-                                        <img src={dinoprint} alt="Dinoprint" className="logos" />
-                                        <p className="logo-title">Dinoprint</p>
-                                    </div>
-                                </div>
+                            <div className="airplane">
+                                <svg width="92" height="91" viewBox="0 0 92 91" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path className="path" d="M1 80C61.5 116.5 119.5 40.5 75 1" stroke="url(#paint0_linear_62_27)" stroke-opacity="0.78" stroke-dasharray="2 2" />
+                                    <defs>
+                                        <linearGradient id="paint0_linear_62_27" x1="90" y1="16.5" x2="6.00002" y2="97.0001" gradientUnits="userSpaceOnUse">
+                                            <stop offset="0.0666637" stop-color="#1E1E1E" stop-opacity="0" />
+                                            <stop offset="0.22392" stop-color="#1E1E1E" />
+                                            <stop offset="0.71204" stop-color="#1E1E1E" />
+                                            <stop offset="0.875797" stop-color="#848484" stop-opacity="0" />
+                                        </linearGradient>
+                                    </defs>
+                                </svg>
+                                <svg className="plane" width="41" height="41" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g clip-path="url(#clip0_60_20)">
+                                        <path d="M34.2368 21.7568L29.3152 22.3768L24.5765 35.7294C24.281 36.4818 23.7882 37.1408 23.15 37.6371C22.5118 38.1333 21.7516 38.4484 20.9495 38.5493L20.6787 38.5834C20.0714 38.6608 19.4544 38.5958 18.8766 38.3935C18.2988 38.1912 17.776 37.8572 17.3496 37.4179C16.9232 36.9787 16.6048 36.4462 16.4197 35.8627C16.2347 35.2791 16.1879 34.6605 16.2833 34.0558L17.9079 23.8139L14.3599 24.2609C13.773 24.3333 13.2062 24.5213 12.6924 24.8142C12.1787 25.107 11.728 25.4988 11.3667 25.9669L9.52425 28.3474C9.05308 28.9537 8.40099 29.3942 7.66256 29.605C6.92413 29.8157 6.13777 29.7857 5.41754 29.5194C4.9721 29.3563 4.56472 29.1038 4.22045 28.7774C3.87619 28.4511 3.60231 28.0578 3.41565 27.6217C3.21109 27.1544 3.10306 26.6505 3.09802 26.1404C3.09299 25.6302 3.19107 25.1244 3.38636 24.6531L5.25873 20.1462C5.76746 18.9262 6.58888 17.8618 7.64017 17.0605C8.69146 16.2591 9.93545 15.7492 11.2467 15.582L16.7695 14.8862L13.4534 8.58074C13.1566 8.01679 13.0009 7.3893 12.9996 6.75202C12.9984 6.11474 13.1516 5.48665 13.4461 4.92151C13.7406 4.35638 14.1678 3.87106 14.6909 3.50709C15.214 3.14312 15.8175 2.91134 16.4498 2.83162C17.2375 2.72814 18.0386 2.83705 18.77 3.14707C19.5015 3.45708 20.1369 3.95695 20.6103 4.59493L27.8495 13.4904L33.1119 12.8274C34.296 12.6782 35.4909 13.0055 36.4336 13.7374C37.3764 14.4692 37.9899 15.5455 38.139 16.7296C38.2882 17.9138 37.9609 19.1086 37.2291 20.0514C36.4973 20.9942 35.4209 21.6076 34.2368 21.7568ZM19.2524 34.5224C19.2296 34.6671 19.2408 34.8151 19.285 34.9548C19.3292 35.0944 19.4054 35.2219 19.5073 35.3271C19.6093 35.4322 19.7343 35.5123 19.8725 35.5609C20.0107 35.6094 20.1583 35.6252 20.3037 35.607L20.5745 35.5728C20.8343 35.5424 21.0814 35.4438 21.2908 35.287C21.5002 35.1303 21.6644 34.921 21.7668 34.6803L25.9845 22.7964L21.0064 23.4236L19.2524 34.5224ZM33.4868 15.8039L27.3985 16.5709C27.1459 16.6025 26.8894 16.5694 26.6532 16.4746C26.417 16.3798 26.2087 16.2264 26.0481 16.0289L18.2291 6.41886C18.0715 6.20029 17.8579 6.02823 17.6108 5.92076C17.3637 5.81328 17.0921 5.77437 16.8248 5.8081C16.6735 5.82703 16.529 5.8824 16.4039 5.96946C16.2787 6.05652 16.1765 6.17268 16.1061 6.30794C16.0357 6.4432 15.9992 6.59353 15.9997 6.74601C16.0002 6.89848 16.0378 7.04856 16.1091 7.18334L20.4319 15.4075C20.5444 15.6221 20.6033 15.8607 20.6034 16.1029C20.6036 16.3452 20.5451 16.5839 20.4329 16.7986C20.3208 17.0133 20.1583 17.1977 19.9593 17.3359C19.7604 17.4741 19.5309 17.5621 19.2906 17.5923L11.6217 18.5584C10.8359 18.6588 10.0905 18.9647 9.46084 19.4454C8.83119 19.9261 8.33959 20.5645 8.03573 21.2961L6.15612 25.8054C6.11699 25.9014 6.09729 26.0043 6.09816 26.108C6.09903 26.2117 6.12044 26.3142 6.16117 26.4095C6.18438 26.4736 6.22085 26.532 6.26818 26.581C6.31552 26.63 6.37266 26.6685 6.43587 26.6939C6.53374 26.7311 6.63908 26.7442 6.74308 26.7323C6.90266 26.7111 7.04782 26.6289 7.14808 26.5029L8.99124 24.1284C9.59416 23.3477 10.346 22.6943 11.2032 22.2061C12.0603 21.7179 13.0058 21.4047 13.9849 21.2844L33.8618 18.7803C34.2565 18.7306 34.6153 18.5261 34.8592 18.2119C35.1032 17.8976 35.2123 17.4993 35.1626 17.1046C35.1128 16.7099 34.9084 16.3511 34.5941 16.1072C34.2798 15.8633 33.8816 15.7541 33.4868 15.8039Z" fill="#1E1E1E" fill-opacity="0.84" />
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_60_20">
+                                            <rect width="36" height="36" fill="white" transform="matrix(0.992158 -0.124992 -0.124992 -0.992158 4.8587 40.5764)" />
+                                        </clipPath>
+                                    </defs>
+                                </svg>
                             </div>
                         </div>
-                    </div>
-                    <div className="introducing-section">
-                        <div className="introducing-title">
-                            <div className="top-introducing">
-                                <p className="start">Introducing</p>
-                                <div className="stylizing-line purple round intro-line"></div>
-                            </div>
-                            <div className="big-text-introducing">
-                                <p>Trying my best every day</p>
-                            </div>
-                        </div>
-                        <div className="floating-cards">
-                            <div className="card-display between" id="first-card">
-                                <div className="about-card">
-                                    <div className="top-card">
-                                        <div className="card-title">
-                                            <img src={spinstar} alt="logo" className="spin-star" />
-                                            <p>About</p>
-                                        </div>
-                                        <div className="presentation">
-                                            <p className="presentation-little">My name is</p>
-                                            <p className="presentation-name">Andrianarivony Aaron</p>
-                                        </div>
-                                        <p className="description-text">
-                                            I describe Myself as just a boy who want to evolve in every project and every work!
-                                        </p>
-                                    </div>
-                                    <div className="about-image">
-                                        <img src={aboutimage} alt="about" />
-                                    </div>
-                                </div>
-                                <div className="tool-card">
-                                    <div className="tool-title">Tools</div>
-                                    <div className="tool-list">
-                                        <img src={figma} alt="figma" />
-                                        <img src={illustrator} alt="Illustrator" />
-                                        <img src={photoshop} alt="Photoshop" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="card-display end" id="second-card">
-                                <div className="animation-card">
-                                    <div className="animation-logo">
-                                        <img src={framer} alt="Framer" />
-                                    </div>
-                                    <div className="animation-blabla">
-                                        <p className="animation-title">Animation</p>
-                                        <p className="animation-text">I can animate everything easily</p>
-                                    </div>
-                                </div>
-                                <div className="demo-card">
-                                    <div className="top-demo">
-                                        <p className="demo-text">A weird <span className="purple-color">shape</span> with another weird <span className="yellow-color">shape</span></p>
-                                        <div className="tag">Demo</div>
-                                    </div>
-                                    <div className="animation-demo">
-                                        <img src={weird} alt="weird" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="card-display end" id="third-card">
-                                <div className="extra-card">
-                                    <div className="top-extra">
-                                        <div className="card-title">
-                                            <img src={spinstar} alt="logo" className="spin-star" />
-                                            <p>Extra</p>
-                                        </div>
-                                        <p className="extra-text">Making Illustration</p>
-                                    </div>
-                                    <div className="illustration-container">
-                                        <div className="vertical-illustration">
-                                            <div className="vertical">
-                                                <img src={verticalone} alt="verti" />
-                                            </div>
-                                            <div className="vertical">
-                                                <img src={verticaltwo} alt="verti" />
-                                            </div>
-                                        </div>
-                                        <div className="horizontal-illustration">
-                                            <img src={horizontal} alt="hori" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="card-display between" id="fourth-card">
-                                <div className="ability-card">
-                                    <div className="ability-title">
-                                        <img src={spinstar} alt="logo" className="spin-star" />
-                                        <p>Ability</p>
-                                    </div>
-                                    <div className="ability-lines">
-                                        <div className="line design-line"></div>
-                                        <div className="line animation-line"></div>
-                                        <div className="line coding-line"></div>
-                                    </div>
-                                </div>
-                                <div className="statistics-card">
-                                    <div className="text-tag">
-                                        <div className="top-statistics">
-                                            <div className="top-top">
-                                                <p className="statistics-text">My skills</p>
-                                            </div>
-                                            <div className="tag">Note</div>
-                                        </div>
-                                        <p className="statistics-blabla">
-                                            Giving a note to my abilities organized in three category
-                                        </p>
-                                    </div>
-                                    <div className="statistics-description">
-                                        <div className="stats">
-                                            <div className="stats-name">
-                                                <div className="little-round design-line"></div>
-                                                <p>Design</p>
-                                            </div>
-                                            <div className="stats-stats">
-                                                <p className="note">A++</p>
-                                                <div className="line-container">
-                                                    <div className="stat-lines design-line"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <hr />
-                                        <div className="stats">
-                                            <div className="stats-name">
-                                                <div className="little-round animation-line"></div>
-                                                <p>Animation</p>
-                                            </div>
-                                            <div className="stats-stats">
-                                                <p className="note">A+</p>
-                                                <div className="line-container">
-                                                    <div className="stat-lines animation-line"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <hr />
-                                        <div className="stats">
-                                            <div className="stats-name">
-                                                <div className="little-round coding-line"></div>
-                                                <p>Coding</p>
-                                            </div>
-                                            <div className="stats-stats">
-                                                <p className="note">A+</p>
-                                                <div className="line-container">
-                                                    <div className="stat-lines coding-line"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="works-section">
-                        <div className="works-title">
-                            <div className="top-works">
-                                <p className="start">Works</p>
-                                <div className="stylizing-line blue round work-line"></div>
-                            </div>
-                        </div>
-                        <div className="works-logo">
-                            <div className="logo-description">
-                                <div className="card-title">
-                                    <img src={spinstar} alt="logo" className="spin-star" />
-                                    <p>Logo Conception</p>
-                                </div>
-                                <div className="big-text-works">
-                                    <p>Need a good logo for your company or anything else ?</p>
-                                </div>
-                                <p className="note">Notice that vector, color manipulation and line are my specialities</p>
-                            </div>
-                            <div className="logo-demo">
-                                <div className="logo-container" id="lumens-container">
-                                    <div className="logo-svg" id="lumens-logo">
-                                        <img src={lumenslogo} alt="Lumens" width={38} />
-                                    </div>
-                                    <div className="logo-info">
-                                        <div className="logo-name">Lumens</div>
-                                        <div className="logo-tips">A flame logo with a circular gradient color from the middle making his way in bottom before going to the top of the ember</div>
-                                    </div>
-                                </div>
-                                <div className="logo-container">
-                                    <div className="logo-svg">
-                                        <img src={serenitylogo} alt="Serenity" width={38} />
-                                    </div>
-                                    <div className="logo-info">
-                                        <div className="logo-name">Serenity</div>
-                                        <div className="logo-tips">From an idea to a project, the logo was made for “ an online music player “ still in developement</div>
-                                    </div>
-                                </div>
-                                <div className="logo-container">
-                                    <div className="logo-svg">
-                                        <img src={arraylogo} alt="Array" width={38} />
-                                    </div>
-                                    <div className="logo-info">
-                                        <div className="logo-name">Array</div>
-                                        <div className="logo-tips">As a baseline for a school project, the Array logo stood out among my works and is still awaiting its project idea</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="works-second-section">
-                        <div className="speciality">
-                            <div className="card-title">
-                                <img src={spinstar} alt="logo" className="spin-star" />
-                                <p>Web Developement</p>
-                            </div>
-                            <div className="big-speciality-text">Specialized in web developement</div>
-                            <div className="specialities-list">
-                                <div className="vertical-left-line"></div>
-                                <div className="speciality-descript">
-                                    <div className="circle-exterior">
-                                        <div className="little-circle"></div>
-                                    </div>
-                                    <div className="right-section-speciality">
-                                        <p className="speciality-name">Website</p>
-                                        <p className="speciality-text">
-                                            Usually work with React librairies. Almost master in Html and Css, doing responsive website is fast and easier than ever.
-                                        </p>
-                                    </div>
-                                </div>
-                                <div className="speciality-descript">
-                                    <div className="circle-exterior">
-                                        <div className="little-circle"></div>
-                                    </div>
-                                    <div className="right-section-speciality">
-                                        <p className="speciality-name">Figma drafts</p>
-                                        <div className="image-figma"></div>
-                                    </div>
-                                </div>
-                                <div className="speciality-descript">
-                                    <div className="circle-exterior">
-                                        <div className="little-circle"></div>
-                                    </div>
-                                    <div className="right-section-speciality">
-                                        <p className="speciality-name">Integration</p>
-                                        <p className="speciality-text" id="hide-bottom">
-                                            Open-minded, integrating design to operational website is fast and easy with my html & css abilities!
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="project">
-                            <div className="project-top">
-                                <div className="card-title">
-                                    <img src={spinstar} alt="logo" className="spin-star" />
-                                    <p>Projects</p>
-                                </div>
-                                <div className="project-description">
-                                    Learn by mistake and evolve in each of them
-                                </div>
-                                <div className="bubble-skill">
-                                    <div className="float-tag">
-                                        <div className="tag-container purple" id="html">Html</div>
-                                        <div className="tag-container blue" id="css">CSS</div>
-                                        <div className="tag-container yellow" id="javascript">JavaScript</div>
-                                        <div className="tag-container blue" id="react">React</div>
-                                    </div>
-                                    <div className="bubbles">
-                                        <div className="round-bubble" id="first-round" onMouseEnter={addHtml} onMouseLeave={removeHtml}></div>
-                                        <div className="round-bubble" id="second-round" onMouseEnter={addCss} onMouseLeave={removeCss}></div>
-                                        <div className="round-bubble" id="third-round" onMouseEnter={addJs} onMouseLeave={removeJs}></div>
-                                        <div className="round-bubble" id="fourth-round" onMouseEnter={addReact} onMouseLeave={removeReact}></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="project-bottom">
-                                <div className="top-project-bottom">
-                                    <div className="work-tag">Histogram</div>
-                                </div>
-                                <div className="monthly-stat">
-                                    <div className="month-bar">
-                                        <div className="bar blue-bar big"></div>
-                                        <p className="abrev">JAN</p>
-                                    </div>
-                                    <div className="month-bar">
-                                        <div className="bar purple-bar medium"></div>
-                                        <p className="abrev">FEB</p>
-                                    </div>
-                                    <div className="month-bar">
-                                        <div className="bar purple-bar"></div>
-                                        <p className="abrev">MAR</p>
-                                    </div>
-                                    <div className="month-bar">
-                                        <div className="bar blue-bar high"></div>
-                                        <p className="abrev">APR</p>
-                                    </div>
-                                    <div className="month-bar">
-                                        <div className="bar purple-bar medium"></div>
-                                        <p className="abrev">MAI</p>
-                                    </div>
-                                    <div className="month-bar">
-                                        <div className="bar white-bar"></div>
-                                        <p className="abrev">JUL</p>
-                                    </div>
-                                    <div className="month-bar">
-                                        <div className="bar blue-bar high"></div>
-                                        <p className="abrev">AUG</p>
-                                    </div>
-                                    <div className="month-bar">
-                                        <div className="bar purple-bar"></div>
-                                        <p className="abrev">SEP</p>
-                                    </div>
-                                    <div className="month-bar">
-                                        <div className="bar blue-bar high"></div>
-                                        <p className="abrev">OCT</p>
-                                    </div>
-                                    <div className="month-bar">
-                                        <div className="bar purple-bar medium"></div>
-                                        <p className="abrev">NOV</p>
-                                    </div>
-                                </div>
-                                <div className="monthly-description">
-                                    <div className="big-text-month">Why?</div>
-                                    <div className="separation-vertical"></div>
-                                    This section is just for fun and for showing that I can do this
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="showcase-text-section">
-                        <div className="works-title show-title">
-                            <div className="top-show">
-                                <p className="start">Showcase</p>
-                                <div className="stylizing-line yellow round show-line"></div>
-                            </div>
-                        </div>
-                        <p data-splitting className="really-big-text">
-                            Creations where creativity and functionality meet, An immersive experience in digital innovation.
-                        </p>
-                    </div>
-                    <div className="showcase">
-                        <div className="tablet">
-                            <div className="left-list">
-                                <div className="top-style">
-                                    <div className="rounds">
-                                        <div className="medium-round purple"></div>
-                                        <div className="medium-round blue"></div>
-                                        <div className="medium-round yellow"></div>
-                                    </div>
-                                </div>
-                                <div className="project-card" id="Wiselearn"></div>
-                                <div className="project-card selected-card" id="Pearl"></div>
-                                <div className="project-card" id="Animo"></div>
-                            </div>
-                            <div className="demo-section">
-                                <div className="screen">
-                                    <img className="screen-image" src={pearl} alt="Demo" />
-                                </div>
-                            </div>
-                        </div>
+                        <p className="huge-text" id="best">best</p>
                     </div>
                 </div>
-                <div className="trick"></div>
+                <p className="huge-text" id="destinations">destinations</p>
             </div>
-            <div className="Footer">
-                <div className="portfolio-background"><p className="footer-text">PortfolioPortfolio</p></div>
-                <div className="left-footer">
-                    <div className="author">
-                        <img src={ron} alt="logo" width="24px" />
-                        <p>My Portfolio</p>
-                    </div>
-                    <p className="footer-message">Don't hesitate anymore, contact me for your projects.</p>
+            <div className="colorful">+500 destinations ready for you!</div>
+            <div className="svgs">
+                <div className="svgcontainer">
+                    <img src={map} id="map" alt="map" />
                 </div>
-                <div className="right-footer">
-                    <div className="footer-list-list">
-                        <div className="footer-list">
-                            <p className="list-title purple-text">Thanks</p>
-                            <p className="footer-list-text">Big thanks to GSAP for its user-friendly animations!</p>
-                            <p className="link-footer">
-                                <Link className="link-click" to="https://gsap.com/" target="_blank"> www.gsap.com</Link>
-                            </p>
-                        </div>
-                        <div className="footer-list">
-                            <p className="list-title blue-text">Service</p>
-                            <div className="footer-list-text">
-                                <p className="click-footer">Deadline</p>
-                                <p className="click-footer">Pricing</p>
-                                <p className="click-footer">Guarantee</p>
-                                <p className="click-footer">Project</p>
-                            </div>
-                            <p className="link-footer">Services are coming soon !</p>
-                        </div>
-                        <div className="footer-list">
-                            <p className="list-title yellow-text">Contact</p>
-                            <div className="footer-list-text select-yellow">
-                                <p className="click-footer contact-link">
-                                    <Link className="contact-click" to="mailto:ron.andraina@gmail.com?" target="_blank">Mail</Link>
-                                </p>
-                                <p className="click-footer">
-                                    <Link className="contact-click" to="https://github.com/ron025533" target="_blank">Github</Link>
-                                </p>
-                                <p className="click-footer">
-                                    <Link className="contact-click" to="https://web.facebook.com/Aaron.ANdrianarivony" target="_blank">Facebook</Link>
-                                </p>
-                                <p className="click-footer">
-                                    <Link className="contact-click" to="https://discord.com/invite/j4PRBD5N" target="_blank">Discord</Link>
-                                </p>
-                                <p className="click-footer">
-                                    <Link className="contact-click" to="https://www.linkedin.com/in/aaron-andrianarivony-b58602315/" target="_blank">LinkedIn</Link>
-                                </p>
-                            </div>
-                            <p className="link-footer">Let's discuss !</p>
-                        </div>
-                    </div>
-                    <p className="footer-version">2024 Ron's portfolio, first version 0.0.1</p>
+                <div className="svgcontainer">
+                    <img src={win} id="win" alt="window" />
                 </div>
+                <div className="svgcontainer">
+                    <img src={trefle} id="trefle" alt="trefle" /></div>
             </div>
+            <div className="particles"></div>
         </div>
-    )
+    );
 }
 
-export default Homepage
+export default Homepage;

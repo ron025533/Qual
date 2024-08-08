@@ -1,0 +1,76 @@
+.particles, #littleblue, #outlinedorange, .croix, #littleviolet, #minusculered, #bigorange, #littlered, #mediumviolet {  
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 80vh;
+}
+
+.particles {
+    z-index: -2;
+    padding-top: 6em;
+    display: flex;
+}
+
+.rounds {
+    border-radius: 500px;
+}
+
+#littleblue {
+    width: 12px;
+    height: 12px;
+    background-color: #A2C9FB;
+    margin: -31em 0 0 7em;
+}
+
+.croix {
+    width: 70px;
+    margin: -23.5em 18em 0 0;
+    scale: 0;
+}
+
+#outlinedorange {
+    width: 16px;
+    height: 16px;
+    border: 6px solid #F4C090;
+    margin: -29.5em 9.5em 0 0;
+}
+
+#littleviolet {
+    width: 12px;
+    height: 12px;
+    background-color: #8884B3;
+    margin: 0 61em 0 0;
+}
+
+#minusculered {
+    width: 8px;
+    height: 8px;
+    background-color: #DE5B53;
+    margin: 0 33em -5em 0;
+}
+
+#bigorange {
+    width: 72px;
+    height: 72px;
+    border: 6px solid #F4C090;
+    margin: 8em 0 0 26em;
+}
+
+#littlered {
+    width: 12px;
+    height: 12px;
+    background-color: #DE5B53;
+    margin: -14em 0 0 68em;
+}
+
+#mediumviolet {
+    width: 22px;
+    height: 22px;
+    background-color: #8884B3;
+    margin: 20em 0 0 52em;
+}
+
+.rounds {
+    scale: 0;
+}
