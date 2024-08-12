@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import Homepage from './pages/Homepage';
+import NotFound from './pages/NotFound';
 import './index.css';
 
 const router = createBrowserRouter([
@@ -9,6 +10,10 @@ const router = createBrowserRouter([
     path:'/',
     element:<Homepage/>
   },
+  {
+    path: '*',
+    element: <NotFound />
+  }
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -16,3 +21,4 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <RouterProvider router={router}/>
   </React.StrictMode>,
 )
+

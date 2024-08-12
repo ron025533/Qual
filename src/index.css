@@ -16,6 +16,16 @@
 }
 
 @font-face {
+  font-family: 'Aeonik-black';
+  src: url(../public/fonts/Aeonik-black.otf);
+}
+
+@font-face {
+  font-family: 'Aeonik-bold';
+  src: url(../public/fonts/Aeonik-bold.otf);
+}
+
+@font-face {
   font-family: 'Gallient';
   src: url(../public/fonts/Gallient.ttf);
 }
@@ -30,6 +40,8 @@
 
   --medium-font: 'Aeonik-medium';
   --light-font: 'Aeonik-light';
+  --black-font: 'Aeonik-black';
+  --bold-font: 'Aeonik-bold';
   --home-font: 'Gallient';
   --title-font: 'Lemonada';
 

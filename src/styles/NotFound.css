@@ -1,0 +1,54 @@
+.notfound-container {
+    /* background-color: aquamarine; */
+    display: flex;
+    align-items: center;
+    padding: 0 7em 0 7em;
+    height: 100vh;
+}
+
+.illustration404 {
+    /* background-color: #383955; */
+    width: 100%;
+    height: 80%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.animation404 {
+    width: 500px;
+}
+
+.biglost {
+    color: #8884B3;
+    font-size: 64px;
+    font-family: var(--black-font);
+}
+
+.lostmessage {
+    color: #383955;
+    font-size: 36px;
+    font-family: var(--bold-font);
+    /* background-color: aliceblue; */
+    padding: 0.4em 0 0.4em 0;
+}
+
+.littletext {
+    display: flex;
+    align-items: center;
+}
+
+.proposition {
+    font-size: 20px;
+    font-family: var(--medium-font);
+    color: #383955;
+    opacity: 78%;
+}
+
+.homepagelink {
+    font-size: 16px;
+    font-family: var(--bold-font);
+    color: #8884B3;
+    cursor: pointer;
+    padding-left: 0.5em;
+}
