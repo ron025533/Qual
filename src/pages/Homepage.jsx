@@ -1,4 +1,5 @@
 import "../styles/Home.css"
+import "../styles/FlexCard.css"
 import map from "../assets/images/map.png"
 import win from "../assets/images/win.png"
 import trefle from "../assets/images/trefle.png"
@@ -10,6 +11,10 @@ import { MotionPathPlugin } from "gsap/MotionPathPlugin";
 import { useGSAP } from "@gsap/react";
 
 const Homepage = () => {
+
+    window.onbeforeunload = function () {
+        window.scrollTo(0, 0);
+    };
 
     useGSAP(() => {
 
@@ -43,7 +48,7 @@ const Homepage = () => {
             colorTl.to(".splash", {
                 backgroundColor: color,
                 duration: 6, // duration of the color transition
-                ease: "none" // linear transition
+                ease: "none", // linear transition
             });
         });
 
@@ -76,6 +81,10 @@ const Homepage = () => {
             gsap.to(".content", {
                 opacity: 1,
                 duration: 1
+            });
+
+            gsap.to(":root", {
+                overflowY: "auto",
             });
         }
 
@@ -196,6 +205,16 @@ const Homepage = () => {
                     <img src={trefle} id="trefle" alt="trefle" /></div>
             </div>
             <div className="particles"></div>
+
+            <div className="flexCard">
+                <div className="flexCard-top">
+                    <div className="FlexCard-text">
+                        <p className="FlexCard-Title">Popular Destination</p>
+                        <p className="FlexCard-description">Discover the world's most popular places.</p>
+                    </div>
+                    <div className="FlexCard-button">Explore more</div>
+                </div>
+            </div>
         </div>
     );
 }

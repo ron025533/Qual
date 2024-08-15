@@ -13,6 +13,7 @@
     justify-content: center;
     height: 70vh;
     margin: 5em 0 0 0;
+    padding-top: 2%;
 }
 
 .bring {
@@ -90,7 +91,7 @@
     position: absolute;
     z-index: -1;
     /* background-color: #383955; */
-    padding-top: 5em;
+    padding-top: 6em;
     display: flex;
     width: 100%;
 }

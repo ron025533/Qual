@@ -1,0 +1,32 @@
+.flexCard {
+    height: 90vh;
+    width: 88%;
+    /* background-color: aquamarine; */
+    padding: 20vh 6% 0 6%;
+}
+
+.flexCard-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.FlexCard-Title {
+    font-size: 30px;
+    font-weight: 600;
+    font-family: var(--title-font);
+    color: #383955;
+}
+
+.FlexCard-description {
+    font-size: 16px;
+}
+
+.FlexCard-button {
+    font-family: var(--light-font);
+    color: white;
+    background-color: #383955;
+    padding: 1.5% 3% 1.5% 3%;
+    border-radius: 40px;
+    font-size: 14px;
+}
